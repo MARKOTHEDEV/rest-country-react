@@ -1,0 +1,101 @@
+/*
+Author:markothedev
+Github Repo: https://github.com/MARKOTHEDEV
+mail:markothedevmail@gmail.com
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    --heading-size:0;
+    --font-size:14px;
+}
+
+html[theme-mode="light-mode"]{
+    --text-color:black;
+    --background-color:#fafafa;
+    --shadow-color:#dddcdc;
+    /* this is background color for the card,nav,search fierld,input field */
+    --box-backgroud-color:white;
+}
+
+html[theme-mode="dark-mode"]{
+    --text-color:#fcffff;
+    --background-color:#202d36;
+    /* this is background color for the card,nav,search fierld,input field */
+
+    --box-backgroud-color:#2b3743;
+
+    --shadow-color:#1d2a33;   
+}
+body{
+    font-family:'Nunito Sans',sans-serif;
+    font-size: 14px;
+}
+body{
+    background-color:var(--background-color);
+}
+nav{
+    padding: 1.4rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 3px 17px 0px var( --shadow-color);
+    margin-bottom: 10%;
+    background-color: var(--box-backgroud-color);
+}
+
+nav h2{
+
+}   
+nav p{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.main_content_area{
+    padding: 0 .9rem;
+}
+
+.search{
+    border: transparent;
+    display: block;
+    width: 90%;
+    margin:  5% 0;
+    margin-bottom: 10%;
+    box-shadow:  1px 2px 24px 0px var( --shadow-color);
+    padding: 1rem;
+    border-radius: 9px;
+    background-color: var(--box-backgroud-color);
+}
+.search::placeholder{
+    color: gray;
+    font-size: .9rem;
+}
+select{
+    appearance: none;
+    border: transparent;
+    background-color:var(--box-backgroud-color);
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  
+}
+.myselect_box{
+    position: relative;
+    box-shadow:  1px 2px 24px 0px var( --shadow-color);
+    width: 60%;
+    border-radius: 5px;
+    
+}
+.section_b{
+    /* border: 1px solid red; */
+    
+}
+.card{
+
+}
