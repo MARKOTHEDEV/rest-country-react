@@ -6,17 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <title>Marko Country</title>
 </head>
 <body>
     <div class="container">
         <nav>
-            <h2>Where in the world</h2>
+            <div class="nav_container">
+                <h2>Where in the world</h2>
 
-            <p id="mode_btn">
-                Dark Mode
-            </p>
+                <div id="mode_btn">
+                        <div class="dark_mode">
+                            Dark Mode
+                            <!-- allow it to have a box-xhadow of black -->
+                            <i class="far icon fa-moon"></i>    
+                        </div>
+
+                        <div class="light_mode icon">
+                            Light Mode
+                            <!-- allow it to have a box-xhadow of yellow -->
+                            <i class="fas  fa-sun"></i>    
+                        </div>
+                </div>
+            </div>
         </nav>
 
         <main class="main_content_area">
@@ -31,7 +44,8 @@
                         <option value="">Europe</option>
                         <option value="">Oceania</option>
                     </select>
-                    <div class="arrow_down"></div>
+                    <!-- <div class="arrow_down"></div> -->
+                    <i class="fas fa-caret-down arrow_down"></i>
                 </div>
             </section>
             <br><br>
@@ -43,11 +57,32 @@
                     <img src="./afg.svg" >
                     <div class="card_content">
                         <h2>Afghanistan</h2>
-                        <p>Population: 27,657,145</p>
-                        <p>Region: Asia</p>
-                        <p>Capital: Kabul</p>
+                        <p><strong>Population</strong>: 27,657,145</p>
+                        <p><strong>Region</strong>: Asia</p>
+                        <p><strong>Capital</strong>: Kabul</p>
                     </div>
                 </div>
+
+                <div class="card">
+                    <img src="./afg.svg" >
+                    <div class="card_content">
+                        <h2>Afghanistan</h2>
+                        <p><strong>Population</strong>: 27,657,145</p>
+                        <p><strong>Region</strong>: Asia</p>
+                        <p><strong>Capital</strong>: Kabul</p>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <img src="./afg.svg" >
+                    <div class="card_content">
+                        <h2>Afghanistan</h2>
+                        <p><strong>Population</strong>: 27,657,145</p>
+                        <p><strong>Region</strong>: Asia</p>
+                        <p><strong>Capital</strong>: Kabul</p>
+                    </div>
+                </div>  
                 
             </section>
         </main>

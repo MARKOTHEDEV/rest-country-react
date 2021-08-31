@@ -19,6 +19,7 @@ html[theme-mode="light-mode"]{
     --shadow-color:#dddcdc;
     /* this is background color for the card,nav,search fierld,input field */
     --box-backgroud-color:white;
+
 }
 
 html[theme-mode="dark-mode"]{
@@ -39,9 +40,6 @@ body{
 }
 nav{
     padding: 1.4rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     box-shadow: 2px 3px 17px 0px var( --shadow-color);
     margin-bottom: 10%;
     background-color: var(--box-backgroud-color);
@@ -54,7 +52,24 @@ nav p{
     font-size: 1rem;
     font-weight: 500;
 }
+#mode_btn .fa-sun{
+    background-color: transparent;
+    color:yellow;
+    /* box-shadow:         0px 0px 19px 0px yellow; */
+}
+#mode_btn .fa-moon{
+    color: black;
+    /* box-shadow:   0px 0px 19px 0px black; */
+}
+#mode_btn .light_mode.icon{
+    display: none;
+}
+.nav_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
+}
 .main_content_area{
     padding: 0 .9rem;
 }
@@ -90,12 +105,53 @@ select{
     box-shadow:  1px 2px 24px 0px var( --shadow-color);
     width: 60%;
     border-radius: 5px;
-    
+    position: relative;
+    cursor: pointer;
+
 }
 .section_b{
     /* border: 1px solid red; */
-    
+   
 }
 .card{
+    /* margin: 0 auto; */
+    width: 80%;
+    /* border: 1px solid rgb(122, 66, 66); */
+    background-color: var(--box-backgroud-color);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 10% auto;
+    line-height: 25px;
+    box-shadow:  1px 2px 24px 0px var( --shadow-color);
 
+}
+
+.card img{
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.card_content{
+    padding: .9rem 1rem;
+}
+.card_content h2{
+    font-size: 1.4rem;
+    padding: .7rem 0;
+}
+.card_content p{
+    font-size: .8rem;
+
+}
+.arrow_down{
+    pointer-events: none;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    display: block;
+    height: 100%;
+    padding: 1rem;
+    cursor: pointer;
 }
