@@ -16,6 +16,7 @@ html{
 html[theme-mode="light-mode"]{
     --text-color:black;
     --background-color:#fafafa;
+    
     --shadow-color:#dddcdc;
     /* this is background color for the card,nav,search fierld,input field */
     --box-backgroud-color:white;
@@ -26,9 +27,7 @@ html[theme-mode="dark-mode"]{
     --text-color:#fcffff;
     --background-color:#202d36;
     /* this is background color for the card,nav,search fierld,input field */
-
     --box-backgroud-color:#2b3743;
-
     --shadow-color:#1d2a33;   
 }
 body{
@@ -51,6 +50,17 @@ nav h2{
 nav p{
     font-size: 1rem;
     font-weight: 500;
+}
+
+.btn{
+    color: var(--text-color);
+    background-color: var(--box-backgroud-color);
+    border: transparent;
+    box-shadow:  -1px 0px 11px 0px var(--shadow-color);
+    padding: .6rem 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
 }
 #mode_btn .fa-sun{
     background-color: transparent;
@@ -126,7 +136,20 @@ select{
     margin: 10% auto;
     line-height: 25px;
     box-shadow:  1px 2px 24px 0px var( --shadow-color);
-
+    transition: transform .2s ease-in-out;
+    /* transform: scale(1); */
+    cursor: pointer;
+    text-decoration: none;
+    color: var( --text-color);
+}
+.card:hover{
+    transform: scale(1.1);
+}
+.card:active{
+    transform: scale(1);
+}
+.card:focus{
+    transform: scale(1.1);
 }
 
 .card img{
@@ -158,6 +181,51 @@ select{
     cursor: pointer;
 }
 
+
+
+/* detail section  card detail*/
+.detail_section{
+    color: var(--text-color);
+    background-color: var(--box-backgroud-color);
+}
+.detail_content_container{
+    color: var(--text-color);
+    background-color: var(--box-backgroud-color);
+}
+.detail_content_container h2{
+    padding: .6rem 0;
+
+}
+.detail_content_container .detail_section__country_info{
+    line-height: 30px;
+    font-size: 1rem;
+    font-weight: 200;
+}
+.detail_section__country_info div:nth-child(2){
+    margin:10% 0 ;
+}
+
+.border_countries_section section{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.detail_content_container .detail_section__country_info div p strong{
+    font-weight: 600;
+}
+.detail_section__image{
+    padding: 1.4rem 0;
+}
+.detail_section__image img{
+ 
+    width: 100%;
+}
+/* detail section style end */
+
+
 @media screen  and (min-width:600px){
     .section_b{
         /* border: 1px solid red; */
@@ -180,6 +248,24 @@ select{
         width: 40%;
         margin: 0;
     }
+    .border_countries_section{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width:700px;
+        /* border: 1px solid red; */
+    }
+    .border_countries_section h4{
+        /* border: 1px solid red; */
+        width: 26%;
+
+    }
+    .border_countries_section section{
+        /* border: 1px solid green; */
+        width: 70%;
+
+    }
+
 }
 
 @media screen  and (min-width:872px){
