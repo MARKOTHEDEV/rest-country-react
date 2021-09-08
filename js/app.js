@@ -36,4 +36,4 @@ const mostOccured =(list)=>{
     console.log(higestObj)
 }
 
-mostOccured([1,2,3,3,3])
+mostOccured([1,1,3])
