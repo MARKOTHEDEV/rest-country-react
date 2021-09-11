@@ -39,22 +39,8 @@ class App extends Component{
 
     
     
-    
-  buildTheme = ()=>{
-    // this will just use the local storage to persist the theme the user chooses
-    const htmlTag = document.querySelector('html');
-    // console.log(localStorage.getItem('theme-mode'))
-
-    if(localStorage){
-
-        localStorage.getItem('theme-mode',htmlTag.getAttribute('theme-mode'))
-    }
-    else{
-        localStorage.setItem('theme-mode',htmlTag.getAttribute('theme-mode'))
-      }
-
-      htmlTag.setAttribute('theme-mode',localStorage.getItem('theme-mode'));
-  }
+   
+       
 
   filterByCountries=(text)=>{
     // this updates the searchResult State it activated by the search Bar
@@ -64,13 +50,18 @@ class App extends Component{
 
   filterByRegion=(text)=>{
     // this updates the searchResult State it activated by the search Bar
+ 
      this.setState({searchResult:this.state.countries.filter(countriesData=>countriesData.region.includes(text))}) 
   }
 
   componentDidMount(){
-    this.buildTheme()
+    // yall already Know what   componentDidMount does am using it behavious to fetch and store the data 
+      this.setState({searchResult:this.state.countries.map((data,index)=>{
+    //    
+        return {...data,id:index}
+      })})
 
-    this.setState({searchResult:[...this.state.countries]})
+
 
   }
 
@@ -89,11 +80,11 @@ class App extends Component{
 
 
 <>
-<div className="container">
+<div className="container" >
   {/* nav component starts */}
         <Nav />
   {/* nav component end */}
-
+<h1></h1>
 
         <main className="main_content_area">
             <section className="section_a">
@@ -103,6 +94,7 @@ class App extends Component{
                 <div className="myselect_box">
                     <select onChange={e=> this.filterByRegion(e.target.value)}>
                         <option value="">Filter by Region</option>
+                        {/* the function below gets all the regions*/}
                         {this.getListOfRegions()}
                     </select>
                     {/* <!-- <div className="arrow_down"></div> --> */}

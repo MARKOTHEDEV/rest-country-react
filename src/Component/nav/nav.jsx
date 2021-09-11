@@ -1,7 +1,7 @@
 import ModeBtn from './modeBtn'
 
 
-const Nav =(props)=>(
+const Nav =()=>(
 
     
     <nav>
@@ -10,7 +10,7 @@ const Nav =(props)=>(
 
 
             {/* start of modeBtn component */}
-                <ModeBtn />
+                <ModeBtn  />
             {/* end of modeBtn component */}
             
             </div>
