@@ -59,6 +59,17 @@ nav i{
     color: var(--text-color);
 
 }
+.Loading img{
+    width: 100%;
+    height: 100%;
+
+}
+.Loading{
+    width: 70px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
 .text{
     color: var(--text-color);
     /* box-shadow:  1px 2px 24px 0px var( --shadow-color); */

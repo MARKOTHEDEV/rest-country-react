@@ -12,26 +12,7 @@ class App extends Component{
         super()
 
         this.state={
-            countries:[
-                {
-                    name:'Afganistan',
-                    population:'10,2300',
-                    region:'africa',
-                    capital:'Kabul',
-                },
-                {
-                    name:'Nigeria',
-                    population:'1,2300',
-                    region:'africa',
-                    capital:'lagos',
-                },
-                {
-                    name:'New york',
-                    population:'10,2300',
-                    region:'united state',
-                    capital:'Kabul',
-                },
-                ],
+            countries:[],
             searchResult:[],
             search:'',
         }
@@ -53,18 +34,30 @@ class App extends Component{
  
      this.setState({searchResult:this.state.countries.filter(countriesData=>countriesData.region.includes(text))}) 
   }
+  async getCountriesDataFromTheInternet(url){
 
+     const resp = await fetch(url)
+     const respData =await resp.json() 
+     return respData
+  }
   componentDidMount(){
-    // yall already Know what   componentDidMount does am using it behavious to fetch and store the data 
-      this.setState({searchResult:this.state.countries.map((data,index)=>{
-    //    
-        return {...data,id:index}
-      })})
 
+     this.getCountriesDataFromTheInternet('https://restcountries.eu/rest/v2/all')
+        .then(countriesData=>{
+            // yall already Know what   componentDidMount does am using it behavious to fetch and store the data
+            this.setState({countries:[...countriesData].map((data,index)=>{
+                //    
+                    return {...data,id:index}
+                })}) 
+
+            this.setState({searchResult:[...this.state.countries]})
+
+        })
+    
 
 
   }
-
+  
   getListOfRegions =()=>{
     //   this method returns the regions and remove duplicates from it
     const regions =  new Set(this.state.countries.map(data=>data.region))

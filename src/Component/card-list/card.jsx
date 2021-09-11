@@ -3,7 +3,7 @@
 const Card = ({data})=>(
     <a href="detail.html" className="card">
         <div >
-            <img src="./afg.svg" />
+            <img src={data.flag} />
             <div className="card_content">
                 <h2>{data.name}</h2>
                 <p><strong>Population</strong>:{data.population}</p>
