@@ -1,5 +1,5 @@
 import Card from './card'
-import Loader from '../searchLoader.gif'
+import GlassesPreloader from '../preloader/Glasses'
 
 const CardList = (props)=>{
     console.log(props.countriesData === [])
@@ -13,11 +13,9 @@ const CardList = (props)=>{
               props.countriesData.map(data=>{
 
                     return (
-                            <Card  data={data}/>
+                            <Card  data={data}  />
                     )
-               }):<div className="Loading">
-                   <img src={Loader} alt="" />
-               </div>
+               }):<GlassesPreloader/>
            }
 
 

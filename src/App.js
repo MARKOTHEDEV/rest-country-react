@@ -2,8 +2,10 @@ import { Component } from 'react'
 import Nav from './Component/nav/nav'
 import CardList from './Component/card-list/card-list'
 import Search from './Component/searchInput/search'
+import CardDetail from './Component/card-list/card-detail'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-
+// alpha3Code
 
 class App extends Component{
 
@@ -26,13 +28,13 @@ class App extends Component{
   filterByCountries=(text)=>{
     // this updates the searchResult State it activated by the search Bar
      
-    this.setState({searchResult:this.state.countries.filter(countriesData=>countriesData.name.includes(text))}) 
+    this.setState({searchResult:this.state.countries.filter(countriesData=>countriesData.name.toLowerCase().includes(text.toLowerCase()))}) 
   }
 
   filterByRegion=(text)=>{
     // this updates the searchResult State it activated by the search Bar
  
-     this.setState({searchResult:this.state.countries.filter(countriesData=>countriesData.region.includes(text))}) 
+     this.setState({searchResult:this.state.countries.filter(countriesData=>countriesData.region.toLowerCase().includes(text.toLowerCase()))}) 
   }
   async getCountriesDataFromTheInternet(url){
 
@@ -59,10 +61,10 @@ class App extends Component{
   }
   
   getListOfRegions =()=>{
-    //   this method returns the regions and remove duplicates from it
-    const regions =  new Set(this.state.countries.map(data=>data.region))
-    // console.log(regions)
-    return  Array.from(regions).map(data=><option value={data}>{data}</option>)
+      //   this method returns the regions and remove duplicates from it
+      const regions =  new Set(this.state.countries.map(data=>data.region))
+      // console.log(regions)
+      return  Array.from(regions).map(data=><option value={data}>{data}</option>)
     }
 
     render(){
@@ -72,35 +74,46 @@ class App extends Component{
 
 
 
-<>
-<div className="container" >
-  {/* nav component starts */}
-        <Nav />
-  {/* nav component end */}
-<h1></h1>
+        <>
+        <Router>
+          <div className="container" >
+            {/* nav component starts */}
+                  <Nav />
+            {/* nav component end */}
+         
 
-        <main className="main_content_area">
-            <section className="section_a">
-                {/* <!-- section a consisit of the search bar and the select Button --> */}
-                <Search   placeholder={"Search for a country..."} filterByCountries={this.filterByCountries}/>
-              
-                <div className="myselect_box">
-                    <select onChange={e=> this.filterByRegion(e.target.value)}>
-                        <option value="">Filter by Region</option>
-                        {/* the function below gets all the regions*/}
-                        {this.getListOfRegions()}
-                    </select>
-                    {/* <!-- <div className="arrow_down"></div> --> */}
-                    <i className="fas fa-caret-down arrow_down"></i>
-                </div>
-            
-            </section>
-            <br /><br />
-            {/* {this.state.searchResult ===[] ?<p>dkdk</p>:<h1 style={{"text-align":"center"}} className="text">Please use the Filter by Region or search Box to Find More Targeted Results</h1>}*/}
-            <CardList countriesData={this.state.searchResult}/>
-        </main>
-    </div>
-</>
+                <main className="main_content_area">
+                   <Switch>
+                      <Route exact path='/'>
+                          <section className="section_a">
+                                {/* <!-- section a consisit of the search bar and the select Button --> */}
+                                <Search   placeholder={"Search for a country..."} filterByCountries={this.filterByCountries}/>
+                              
+                                <div className="myselect_box">
+                                    <select onChange={e=> this.filterByRegion(e.target.value)}>
+                                        <option value="">Filter by Region</option>
+                                        {/* the function below gets all the regions*/}
+                                        {this.getListOfRegions()}
+                                    </select>
+                                    {/* <!-- <div className="arrow_down"></div> --> */}
+                                    <i className="fas fa-caret-down arrow_down"></i>
+                                </div>
+                            
+                            </section>
+                            <br /><br />
+                            {/* {this.state.searchResult ===[] ?<p>dkdk</p>:<h1 style={{"text-align":"center"}} className="text">Please use the Filter by Region or search Box to Find More Targeted Results</h1>}*/}
+                            <CardList countriesData={this.state.searchResult}/>                  
+                      </Route>  
+                  
+                      <Route exact path="/:alpha3Code">
+                            <CardDetail  countries={this.state.countries}/>
+                      </Route>
+                    </Switch>
+               
+                </main>
+            </div>
+        </Router>
+        </>
       )
     }
 

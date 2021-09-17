@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 
-
-const Card = ({data})=>(
-    <a href="detail.html" className="card">
+const Card = ({data})=>{
+    
+    return(
+    
+    <Link to={data.alpha3Code} className="card">
         <div >
             <img src={data.flag} />
             <div className="card_content">
@@ -11,9 +14,8 @@ const Card = ({data})=>(
                 <p><strong>Capital</strong>: {data.capital}</p>
             </div>
         </div>
-    </a>
-
-)
+    </Link>)
+}
 
 
 export default Card
