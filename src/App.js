@@ -11,6 +11,7 @@ class App extends Component{
 
 
     constructor(){
+      // here we are Extending all the Methods and Properties of Component to App
         super()
 
         this.state={
@@ -37,7 +38,7 @@ class App extends Component{
      this.setState({searchResult:this.state.countries.filter(countriesData=>countriesData.region.toLowerCase().includes(text.toLowerCase()))}) 
   }
   async getCountriesDataFromTheInternet(url){
-
+    // this is a async funtion that gets all the Data From The Rest Country End Point
      const resp = await fetch(url)
      const respData =await resp.json() 
      return respData
@@ -45,13 +46,19 @@ class App extends Component{
   componentDidMount(){
 
      this.getCountriesDataFromTheInternet('https://restcountries.eu/rest/v2/all')
+     /* 
+        The Following Code Gets the country Data From the Endpoint all we do is Store the data in the State
+
+        the first state i use it for a store House Of All the Data
+        the Other One Is the Filter Version which is The Search Result -- Initially it will be filled with search data
+     */
         .then(countriesData=>{
             // yall already Know what   componentDidMount does am using it behavious to fetch and store the data
             this.setState({countries:[...countriesData].map((data,index)=>{
                 //    
                     return {...data,id:index}
                 })}) 
-
+                
             this.setState({searchResult:[...this.state.countries]})
 
         })
@@ -64,7 +71,7 @@ class App extends Component{
       //   this method returns the regions and remove duplicates from it
       const regions =  new Set(this.state.countries.map(data=>data.region))
       // console.log(regions)
-      return  Array.from(regions).map(data=><option value={data}>{data}</option>)
+      return  Array.from(regions).map((data,index)=><option value={data} key={index}>{data}</option>)
     }
 
     render(){
