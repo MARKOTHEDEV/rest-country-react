@@ -75,10 +75,10 @@ const CardDetail =(props)=>{
 
                                 // Now We Want to get the Current Country Borders Which is an array of
                                 // different Country Each_alpha3Code
-                               Country.borders.map(Each_alpha3CodeForBorder=>{
+                               Country.borders.map((Each_alpha3CodeForBorder,index)=>{
                                  let boredCountryObject=  GetCountry(props.countries,Each_alpha3CodeForBorder)
                               
-                                return <Link className="btn border_countries__btn" to={`/${boredCountryObject.alpha3Code}`} >{boredCountryObject.name} </ Link>
+                                return <Link className="btn border_countries__btn" to={`/${boredCountryObject.alpha3Code}`} key={index}>{boredCountryObject.name} </ Link>
                               })
                            }
                         </section>

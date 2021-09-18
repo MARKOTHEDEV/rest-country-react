@@ -4,7 +4,7 @@ const Card = ({data})=>{
     
     return(
     
-    <Link to={data.alpha3Code} className="card">
+    <Link to={data.alpha3Code} className="card" >
         <div >
             <img src={data.flag} />
             <div className="card_content">
