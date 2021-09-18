@@ -13,7 +13,7 @@ const CardList = (props)=>{
               props.countriesData.map(data=>{
 
                     return (
-                            <Card  data={data}  />
+                            <Card  data={data} key={data.alpha3Code} />
                     )
                }):<GlassesPreloader/>
            }
