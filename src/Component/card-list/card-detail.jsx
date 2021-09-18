@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { useParams,useHistory } from  'react-router-dom'
+import { useParams,useHistory,Link } from  'react-router-dom'
 import GlassesPreloader from '../preloader/Glasses'
 
 /*
@@ -9,7 +9,8 @@ when we click on a card we use the alpha3Code to genrate the Card detail Content
 */
 
 const CardDetail =(props)=>{
-   let { alpha3Code } = useParams()
+   let { alpha3Code } = useParams();
+   let history = useHistory()
    console.log(alpha3Code)
 
    const GetCountry=(data,alpha3Code)=>{
@@ -18,12 +19,17 @@ const CardDetail =(props)=>{
       return data.filter(country=>country.alpha3Code.includes(alpha3Code))[0]
    }
 
+
+   const handleGoingBackToMainPage = ()=>{
+    history.push('/')
+   }
+
    const Country = GetCountry(props.countries,alpha3Code)
    console.log(Country)
  return (
 
     <>
-            <button className="btn back_button">
+            <button className="btn back_button" onClick={()=>handleGoingBackToMainPage()}>
                 <i className="fas fa-arrow-left"></i>
                 Go Back
             </button>
@@ -47,18 +53,34 @@ const CardDetail =(props)=>{
                         </div>
 
                         <div className="detail_section__country_info__section_b">
-                            <p><strong>Top Level Domain:</strong>.be</p>
-                            <p><strong>Currencies:</strong> Euro</p>
-                            <p><strong>Languages:</strong> Dutch,French,German</p>
+                            <p><strong>Top Level Domain:</strong>{Country.topLevelDomain[0].toString()}</p>
+                            <p><strong>Currencies:</strong>{Country.currencies.map(data=>data.name).toString()} </p>
+                            <p><strong>Languages:</strong> {Country.languages.map(data=>data.name).toString()}</p>
                         </div>
 
                         <div className="border_countries_section">
-                            <h4>Border Countries:</h4>
+                            
+                        {/* //    if this country Doesnt have Border Just Display a message */}
+                        { Country.borders.length ==0 ?<p style={{'textAlign':'center'}}><strong>{Country.name}</strong> Doesn't Have <strong>Border!</strong></p>:
+                         <h4>Border Countries:</h4>
+                        }
+                           
 
                         <section>
-                            <button className="btn border_countries__btn">France</button>
-                            <button className="btn border_countries__btn">Germany</button>
-                            <button className="btn border_countries__btn">NetherLands</button>
+                            
+                           {   
+
+                        
+                            // Basically we just map Through the Array Of Borders
+
+                                // Now We Want to get the Current Country Borders Which is an array of
+                                // different Country Each_alpha3Code
+                               Country.borders.map(Each_alpha3CodeForBorder=>{
+                                 let boredCountryObject=  GetCountry(props.countries,Each_alpha3CodeForBorder)
+                              
+                                return <Link className="btn border_countries__btn" to={`/${boredCountryObject.alpha3Code}`} >{boredCountryObject.name} </ Link>
+                              })
+                           }
                         </section>
                         </div>
                         <br />
