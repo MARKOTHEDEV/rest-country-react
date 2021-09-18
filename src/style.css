@@ -84,6 +84,8 @@ nav i{
     cursor: pointer;
     font-size: 1rem;
     font-weight: 400;
+    list-style-type: none;
+    display: inline-block;
     /* box-shadow: 2px 3px 17px 0px var( --shadow-color); */
 }
 #mode_btn .fa-sun{
@@ -248,15 +250,19 @@ select{
     /* align-items: center; */
     padding: 1rem 0;
     display: grid;
-    gap: 0 10px;
+    gap: 10px 10px;
     grid-template-columns: repeat(3,1fr);
+    /* align-items: center;
+    justify-content: center; */
 }
 .border_countries__btn{
     padding: .6rem .8rem;
     font-size: .8rem;
     font-weight: 300;
     color: var(--text-color);
-
+    align-self: center;
+    text-align: center;
+    text-decoration: none;
 
 }
 
